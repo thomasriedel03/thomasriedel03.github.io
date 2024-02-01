@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walls</title>
+
+    <style>
+        .img{
+            width:100%;
+        }
+
+        .smallimg{
+            width:60%;
+            height: 650px;
+            object-fit: cover;
+            object-position: 50% 100%;
+        }
+
+        .vorher-container{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        1.2.1 climbTheStairs
+    </h1>
+    <img class="img" src="img/climbTheStairs.png">
+<br>
+    <h1>
+        1.2.2 fillTheHoles
+    </h1>
+    <img class="img" src="img/fillTheHoles.png">
+    <div>
+        Das Ganze funktionert auch ohne die repeat(9)-Funktion über der while-Schleife,
+        da die while-Schleife sich von selbst wiederholt. <br>
+        Oder noch kürzer: 
+        <pre>
+            void fillTheHoles(){
+                while(frontIsClear()){
+                    moveForward();
+                    turnRight();
+                    moveForward();
+                    dropBeeper();
+                    turnAround();
+                    moveForward();
+                    turnRight();
+                    moveForward();
+                }
+                
+            }
+        </pre>
+
+    </div>
+    <br>
+    <h1>
+        1.2.3 saveTheFlower 
+    </h1>
+    <br>
+     <br>
+     <div class="vorher-container">
+        <img class="smallimg" src="img/saveTheFlowersVorher.png">
+        <p>
+            <pre>
+                //1.2.3 Save the Flower
+
+                    void saveTheFlower(){
+                        pickup();
+                        climb();
+                        dropBeeper();
+                        descend();
+                    }
+
+                    void descend(){
+                        while(!rightIsClear()){
+                            moveForward();
+                            turnRight();
+                            moveForward();
+                            moveForward();
+                            turnLeft();
+                        }
+                    }
+
+                    void climb(){
+                        while(!frontIsClear()){
+                            turnLeft();
+                            moveForward();
+                            moveForward();
+                            turnRight();
+                            moveForward();
+                        }
+                    }
+
+                    void pickup(){
+                        moveForward();
+                        pickBeeper();
+                    }
+            </pre>
+        </p>
+    </div>
+    <br>
+    <div>
+        <img class="smallimg" src="img/saveTheFlowerNachher.png">
+    </div>
+    <br>
+    <h1>
+        1.2.4 mowTheLawn
+    </h1>
+    <div class="vorher-container">
+        <img class="smallimg" src="img/mowTheLawn.png">
+        <p>
+            <h3>
+                Lösung:
+            </h3>
+            <pre>
+                void mowTheLawn(){
+                    while(beeperAhead()){
+                        mowRow();
+                        
+                    }
+                }
+                
+                void mowRow(){
+                    while(beeperAhead()){
+                        moveForward();
+                        pickBeeper();
+                    }
+                    turnLeft();
+                }
+            </pre>
+        </p>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helping Duties</title>
+
+    <style>
+        .small-image{
+            width:65%;
+            object-fit:cover;
+        }
+
+        .big-image{
+            width:80%;
+            object-fit:cover;
+        }
+        .image-container{
+            display: flex;
+            justify-content: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        1.3.1 harvestTheField
+    </h1>
+    <br>
+    <div class="image-container">
+
+        <img class="small-image" src="img/harvestTheField.png">
+        <p>
+
+            <pre>
+                <h3>
+                    Lösung:
+                </h3>
+                void harvestTheField(){
+                    repeat(2){
+                        harvestRow1();
+                        rightSide();
+                        harvestRow2();
+                        leftSide();
+                        
+                    }
+                }
+                
+                void leftSide(){
+                    moveForward();
+                    turnRight();
+                    moveForward();
+                }
+                
+                void harvestRow1(){
+                    repeat(3){
+                        pickBeeper();
+                        turnRight();
+                        moveForward();
+                        turnLeft();
+                        moveForward();
+                        
+                    }
+                    pickBeeper();
+                }
+                
+                void rightSide(){
+                    moveForward();
+                    turnLeft();
+                    moveForward();
+                    
+                }
+                
+                void harvestRow2(){
+                    repeat(3){
+                        pickBeeper();
+                        moveForward();
+                        turnLeft();
+                        moveForward();
+                        turnRight();      
+                    }
+                    pickBeeper();
+                }
+            </pre>
+        </p>
+    </div>
+    <br>
+    <h1>
+        1.3.2 repairTheStreet
+    </h1>
+    <br>
+    <div class="image-container">
+        <img class="small-image" src="img/repairTheStreet.png">
+
+        <pre>
+            <h3>
+                Lösung:
+            </h3>
+            void repairTheStreet(){
+                repeat(9){
+                    if(rightIsClear()){
+                        turnRight();
+                        moveForward();
+                        dropBeeper();
+                        turnAround();
+                        moveForward();
+                        turnRight();
+                        moveForward();
+                        
+                    }
+                    
+                    else{ 
+                        moveForward();
+                    }
+                    
+                }  
+                turnRight();
+                moveForward();
+                dropBeeper();
+                turnAround();
+            }
+        </pre>
+    </div>
+    <br>
+    <h1>
+        1.3.3 cleanTheRoom
+    </h1>
+    <div class="image-container">
+        <img class="small-image" src="Img/cleanTheRoom.png">
+        <pre>
+            <h3>
+                Lösung:
+            </h3>
+            void cleanTheRoom(){
+                while(frontIsClear()){
+                    cleanRow();  
+                    leftCircle();
+                    cleanRow();
+                    rightCircle();  
+                }  
+            }   
+            
+            void cleanRow(){
+                while(frontIsClear()||onBeeper()){
+                    if(onBeeper()){
+                        pickBeeper();
+                    }
+                    else{
+                        moveForward();
+                    }     
+                }    
+            }
+            
+            void leftCircle(){
+                turnLeft();
+                moveForward();
+                turnLeft();
+            }
+            
+            void rightCircle(){
+                turnRight();
+                moveForward();
+                turnRight();
+            }
+        </pre>
+    </div>
+<br>
+    <h1>
+        1.3.4 Tile The Floor
+    </h1>
+    <div>
+        <img class="big-image" src="img/tileTheFloor.png">
+    </div>
+    <br>
+
+    <h1>
+        Quelltext der restlichen Aufgaben:
+        <pre>
+            
+        </pre>
+    </h1>
+</body>
+</html>
