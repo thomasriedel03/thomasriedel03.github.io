@@ -47,35 +47,67 @@
     </table> 
 
     <script>
+        // Funktion zum Hinzufügen eines Elements zur Liste
         function addItem(){
             let newItem = document.getElementById("sample3").value;
 
-            let tableBody = document.getElementById("tableBody");
+            // Zugriff auf den localStorage
+            let storedList = JSON.parse(localStorage.getItem('shoppingList')) || [];
 
-            let newRow = tableBody.insertRow(tableBody.rows.length);
+            // Hinzufügen des neuen Elements zur Liste
+            storedList.push({
+                item: newItem,
+                bought: false
+            });
 
-            // Erstellen Sie Zellen mit der gleichen Anzahl wie im Kopf
-            let cell1 = newRow.insertCell(0);
-            let cell2 = newRow.insertCell(1);
-            let cell3 = newRow.insertCell(2);
+            // Aktualisieren des localStorage
+            localStorage.setItem('shoppingList', JSON.stringify(storedList));
 
-            cell1.innerHTML = tableBody.rows.length;
-            cell2.innerHTML = newItem;
-            cell3.innerHTML = '<input type="checkbox" onclick="markAsBought(this)">';
-
+            // Aktualisieren der Anzeige
+            displayList();
+            
             document.getElementById("sample3").value = "";
         }
 
-        function markAsBought(checkbox){
-            // Hier kannst du die Logik implementieren, um zu verarbeiten, dass ein Element gekauft wurde.
-            // Zum Beispiel kannst du auf die Elternzeile zugreifen und den Status speichern.
-            let row = checkbox.closest("tr");
-            // Hier kannst du weitere Logik hinzufügen, je nachdem, wie du den Status speichern möchtest.
+        // Funktion zum Anzeigen der Liste
+        function displayList() {
+            let tableBody = document.getElementById("tableBody");
+
+            // Löschen des aktuellen Inhalts
+            tableBody.innerHTML = "";
+
+            // Abrufen der Liste aus dem localStorage
+            let storedList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+            // Hinzufügen der Elemente zur Tabelle
+            storedList.forEach((item, index) => {
+                let newRow = tableBody.insertRow(tableBody.rows.length);
+                let cell1 = newRow.insertCell(0);
+                let cell2 = newRow.insertCell(1);
+                let cell3 = newRow.insertCell(2);
+
+                cell1.innerHTML = index + 1;
+                cell2.innerHTML = item.item;
+                cell3.innerHTML = '<input type="checkbox" ' + (item.bought ? 'checked' : '') + ' onclick="markAsBought(this, ' + index + ')">';
+            });
         }
+
+        // Funktion zum Markieren als gekauft
+        function markAsBought(checkbox, index) {
+            let storedList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+            // Aktualisieren des gekauft-Status im localStorage
+            storedList[index].bought = checkbox.checked;
+
+            // Aktualisieren des localStorage
+            localStorage.setItem('shoppingList', JSON.stringify(storedList));
+        }
+
+        // Beim Laden der Seite die Liste anzeigen
+        displayList();
     </script>
 
 </body>
 </html>
-
 
 
