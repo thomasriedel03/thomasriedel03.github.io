@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+}
+
+
+header{
+    height: 100px;
+    box-shadow: 20px 6px 15px 0px rgba(0,0,0,0.66);
+}
+
+header h1{
+    margin: 0;
+    padding: 5px;
+}
+
+.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label{
+    margin-left: 50px;
+    margin-right: 0;
+}
+
+.add-container{
+    display: flex;
+    justify-content: center;
+}
+
+#itemTable{
+    margin-left: 500px;
+}
